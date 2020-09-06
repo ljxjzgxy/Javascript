@@ -8,7 +8,21 @@ html, body {
 }
 
 /*============= NAVIGATION =============*/
-
+.navbar-brand img{
+  height: 2.8rem;
+}
+.navbar{
+  background: linear-gradient(to right, #f2f2f2, #FBFBFB);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+}
+.navbar-item{
+  padding: 0.4;
+}
+.nav-link{
+  color:black !important;
+}
 
 
 /*============= CAROUSEL =============*/
