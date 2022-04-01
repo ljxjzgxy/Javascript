@@ -1,12 +1,15 @@
 function isNum(val)
 {
+  if(val===null || val==="") return false;
   if(val===0 || val==="0") return true;
   
   let result;
-  if(val) {
-    if( typeof val==="string") { val = val.trim();}
-    else { result = Number(val); }
+  if(val && typeof val==="string") {
+    val = val.trim();
+    if(val==="") return false;
   } 
+  
+  result = Number(val);
   
   if(!isNaN(result) && typeof result==="number") return true;
   return false;
