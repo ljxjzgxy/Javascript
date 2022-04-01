@@ -1,6 +1,6 @@
 function isNum(val)
 {
-  if(val===0) return true;
+  if(val===0 || val==="0") return true;
   
   let result;
   if(val) {
