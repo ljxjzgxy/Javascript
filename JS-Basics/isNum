@@ -1,0 +1,13 @@
+function isNum(val)
+{
+  if(val===0) return true;
+  
+  let result;
+  if(val) {
+    if( typeof val==="string") { val = val.trim();}
+    else { result = Number(val); }
+  } 
+  
+  if(!isNaN(result) && typeof result==="number") return true;
+  return false;
+}
