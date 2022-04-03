@@ -1,3 +1,5 @@
+//https://www.youtube.com/watch?v=cjIswDCKgu0
+
 const input= document.querySelector("input");
 const defaultText = document.getElementById("default");
 const debounceText = document.getElementById("debounce");
