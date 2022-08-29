@@ -10,3 +10,9 @@ const deepClone =(obj)=>{
   }
   return newObject;
 }
+
+
+//solution two, https://javascript.info/prototype-methods
+let clone = Object.create(
+  Object.getPrototypeOf(obj), Object.getOwnPropertyDescriptors(obj)
+);
