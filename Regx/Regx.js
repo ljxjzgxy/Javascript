@@ -12,7 +12,7 @@ function isEmail(email) {
 function thousandSeparator(num,separator = ',') {
 	const regInteger = /(?=(\B)(\d{3})+$)/g;
         const regFloat = /(?=(\B)((\d{3})+(\.\d*){1}$))/g;
-	let reg = null
+	let reg = null;
 	if (Number(num) === num) { 
 	    if(num % 1 === 0){ //integer
 	      	reg = regInteger;
