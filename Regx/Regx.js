@@ -13,8 +13,8 @@ function thousandSeparator(num,separator = ',') {
 	const regInteger = /(?=(\B)(\d{3})+$)/g;
         const regFloat = /(?=(\B)((\d{3})+(\.\d*){1}$))/g;
 	let reg = null
-	if (Number(item) === item) { 
-	    if(item % 1 === 0){ //integer
+	if (Number(num) === num) { 
+	    if(num % 1 === 0){ //integer
 	      	reg = regInteger;
 	    } else { // float
 		reg = regFloat;
