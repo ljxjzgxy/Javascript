@@ -31,6 +31,40 @@ function debounce(cb,delay=1000){
    }  
 }
 
+//another debounce function
+function debounceX(cb, delay=1000,runAtFirst = false){
+  var timer = null;
+  var debounced = function(...args) {
+    var _self = this;
+
+    clearTimeout(timer);
+    
+    if(runAtFirst === true){
+      var exec = !timer;
+      timer = setTimeout(funciton(){
+        timer = null;
+      },delay);
+      if(exec) {
+        cb.apply(_self,args);
+      }
+    } else {
+      timer = setTimeout(function(){
+        cb.apply(_self,args);
+      },delay)
+    }
+  }
+
+  debounced.remove = function(){
+    clearTimeout(timer);
+    timer = null;
+  }
+  
+  return debounced;
+}
+
+
+
+
 
 function throttle(cb,delay=1000){
   let shouldWait = false;
