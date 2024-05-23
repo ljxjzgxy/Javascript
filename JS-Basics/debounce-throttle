@@ -80,6 +80,7 @@ funciton throttleX(cb, delay = 1000) {
     } else {
       timer = setTimeout(function(){
         cb.apply(_self, args);
+        begin = cur;
       }, delay)
     }
   }
