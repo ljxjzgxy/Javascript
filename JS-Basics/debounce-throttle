@@ -63,6 +63,28 @@ function debounceX(cb, delay=1000,runAtFirst = false){
 }
 
 
+//another throttle function
+funciton throttleX(cb, delay = 1000) {
+  var timer = null;
+  var begin = Date.now();
+  
+  return function(...args){
+    var _self = this;
+    var cur = Date.now();
+    
+    clearTimeout(timer);
+    
+    if(cur - begin >= delay){
+      cb.apply(_self, args);
+      begin = cur;
+    } else {
+      timer = setTimeout(function(){
+        cb.apply(_self, args);
+      }, delay)
+    }
+  }
+}
+
 
 
 
