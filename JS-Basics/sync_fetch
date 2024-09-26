@@ -1,0 +1,57 @@
+function getData() {
+  const data = fetch("https://jsonplaceholder.typicode.com/todos/1");
+  console.log(data, "<--------fetch data");
+}
+
+function run(func) {
+  let cache = [];
+  let i = 0;
+  const _originFetch = window.fetch;
+
+  window.fetch = (...args) => {
+    if (cache[i]) {
+      if (cache[i].status === "fulfilled") {
+        return cache[i].data;
+      } else if (cache[i].status === "rejected") {
+        throw cache[i].err;
+      }
+    }
+
+    const result = {
+      status: "pending",
+      data: null,
+      arr: null
+    };
+
+    cache[i++] = result;
+
+    const fetchPromise = _originFetch(...args)
+      .then((resp) => resp.json())
+      .then(
+        (data) => {
+          result.status = "fulfilled";
+          result.data = data;
+        },
+        (err) => {
+          result.status = "rejected";
+          result.err = err;
+        }
+      );
+
+    throw fetchPromise;
+  };
+
+  try {
+    func();
+  } catch (err) {
+    if (err instanceof Promise) {
+      const reRun = () => {
+        i = 0;
+        func();
+      };
+      err.then(reRun, reRun);
+    }
+  }
+}
+
+run(getData);
